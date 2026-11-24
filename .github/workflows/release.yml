@@ -19,6 +19,11 @@ jobs:
         with:
           fetch-depth: 0
 
+      # Files uploaded through the GitHub web UI lose the executable bit, and
+      # gradle-semantic-release-plugin runs ./gradlew directly.
+      - name: Make gradlew executable
+        run: chmod +x gradlew
+
       - name: Setup Java
         uses: actions/setup-java@v6
         with:
